@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Médiathèque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+</head>
+<body>
+    <h1>Médiathèque</h1>
+    
+    <input type="text" class="text-input" id="nameInput" placeholder="Nom du livre">
+    <button class="search" id="sendBtn">Chercher</button>
+    <button class="hide" id="adminBtn">Refresh</button>
+
+    <div id="labelContainer"></div> <!-- Add a slider here -->
+    <p id="serverReply"></p>
+
+    <script src="{{ url_for('static', filename='static/script.js') }}"></script>
+</body>
+</html>

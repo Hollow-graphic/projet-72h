@@ -1,0 +1,219 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "The Great Adventure | John Smith",
+            "status": true,
+            "Account": null,
+            "date": "",
+            "account": ""
+        },
+        {
+            "id": 2,
+            "name": "Mystery of the Old House | Marie Curie",
+            "status": false,
+            "Account": null,
+            "date": "",
+            "account": ""
+        },
+        {
+            "id": 3,
+            "name": "Learning Python | Guido van Rossum",
+            "status": true,
+            "Account": null,
+            "date": null,
+            "account": null
+        },
+        {
+            "id": 4,
+            "name": "History of Art | Leonardo da Vinci",
+            "status": false,
+            "Account": "temp",
+            "date": ""
+        },
+        {
+            "id": 5,
+            "name": "Science and Technology | Nikola Tesla",
+            "status": false,
+            "Account": "temp",
+            "date": ""
+        },
+        {
+            "id": 6,
+            "name": "Cooking 101 | Julia Child",
+            "status": false,
+            "Account": "temp",
+            "date": ""
+        },
+        {
+            "id": 7,
+            "name": "Travel the World | Marco Polo",
+            "status": false
+        },
+        {
+            "id": 8,
+            "name": "Philosophy Basics | Socrates",
+            "status": false
+        },
+        {
+            "id": 9,
+            "name": "Modern Architecture | Frank Lloyd Wright",
+            "status": false
+        },
+        {
+            "id": 10,
+            "name": "Gardening for Beginners | Monty Don",
+            "status": true
+        },
+        {
+            "id": 11,
+            "name": "Digital Photography | Ansel Adams",
+            "status": false
+        },
+        {
+            "id": 12,
+            "name": "Music Theory | Ludwig van Beethoven",
+            "status": false
+        },
+        {
+            "id": 13,
+            "name": "Yoga and Wellness | B.K.S. Iyengar",
+            "status": true
+        },
+        {
+            "id": 14,
+            "name": "Creative Writing | Ernest Hemingway",
+            "status": false
+        },
+        {
+            "id": 15,
+            "name": "Astronomy for Everyone | Carl Sagan",
+            "status": true
+        },
+        {
+            "id": 16,
+            "name": "Economics 101 | Adam Smith",
+            "status": false
+        },
+        {
+            "id": 17,
+            "name": "Psychology Basics | Sigmund Freud",
+            "status": false
+        },
+        {
+            "id": 18,
+            "name": "Film Studies | Alfred Hitchcock",
+            "status": true
+        },
+        {
+            "id": 19,
+            "name": "Environmental Science | Rachel Carson",
+            "status": false
+        },
+        {
+            "id": 20,
+            "name": "Political Science | Niccolò Machiavelli",
+            "status": true
+        },
+        {
+            "id": 21,
+            "name": "Anthropology Basics | Margaret Mead",
+            "status": false
+        },
+        {
+            "id": 22,
+            "name": "Sociology 101 | Émile Durkheim",
+            "status": false
+        },
+        {
+            "id": 23,
+            "name": "Biology for Beginners | Charles Darwin",
+            "status": false
+        },
+        {
+            "id": 24,
+            "name": "Chemistry Essentials | Marie Curie",
+            "status": false
+        },
+        {
+            "id": 25,
+            "name": "Physics Fundamentals | Isaac Newton",
+            "status": true
+        },
+        {
+            "id": 26,
+            "name": "Mathematics Made Easy | Carl Gauss",
+            "status": false
+        },
+        {
+            "id": 27,
+            "name": "Literature Classics | William Shakespeare",
+            "status": true
+        },
+        {
+            "id": 28,
+            "name": "Philosophy of Mind | René Descartes",
+            "status": false
+        },
+        {
+            "id": 29,
+            "name": "Sustainable Living | Vandana Shiva",
+            "status": false
+        },
+        {
+            "id": 30,
+            "name": "Artificial Intelligence | Alan Turing",
+            "status": true
+        },
+        {
+            "id": 31,
+            "name": "History of Music | Johann Sebastian Bach",
+            "status": false
+        },
+        {
+            "id": 32,
+            "name": "Creative Coding | Processing Foundation",
+            "status": false
+        },
+        {
+            "id": 33,
+            "name": "World Religions | Karen Armstrong",
+            "status": true
+        },
+        {
+            "id": 34,
+            "name": "Health and Nutrition | Michael Pollan",
+            "status": false
+        },
+        {
+            "id": 35,
+            "name": "Business Strategy | Peter Drucker",
+            "status": false
+        },
+        {
+            "id": 36,
+            "name": "Entrepreneurship Basics | Elon Musk",
+            "status": true
+        },
+        {
+            "id": 37,
+            "name": "Marketing Fundamentals | Philip Kotler",
+            "status": false
+        },
+        {
+            "id": 38,
+            "name": "Finance for Everyone | Warren Buffett",
+            "status": false
+        },
+        {
+            "id": 39,
+            "name": "Leadership Skills | John C. Maxwell",
+            "status": true
+        },
+        {
+            "id": 40,
+            "name": "Project Management | PMI",
+            "status": false
+        }
+    ]
+}

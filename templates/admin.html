@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+</head>
+<body>
+    <h1>Admin Page</h1>
+    <input type="text" class="text-input" id="nameInput" placeholder="Nom ou id du livre">
+    <button class="search" id="sendBtn">Chercher</button>
+    <button class="search" id="adminBtn">Rendre</button>
+
+    <input type="text" class="text-input" id="AccountInput" placeholder="Nom du compte">
+    <input type="date" id ="dateInput">
+
+    <div id="labelContainer"></div>
+    <p id="serverReply"></p>
+
+    <script 
+        src="{{ url_for('static', filename='static/script.js') }}">
+    </script>
+</body>
+</html>

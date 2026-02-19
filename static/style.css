@@ -1,0 +1,129 @@
+body {
+  background-color: #f9fafb;
+  font-family: Arial, sans-serif, bold;
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #445d72;
+  font-family: Arial, sans-serif, bold;
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0)
+}
+
+.block {
+  width: 20%;
+  height: auto;
+  min-height: 250px;
+  max-height: 100%
+  padding: 12px 14px;
+  margin: 10px;
+  border-radius: 12px;
+  border: 1px solid #ffeaa7;
+  background-color: #f3f6f7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  display: flex;
+  display: inline-block;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #445d72;
+}
+
+.status-button {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.waiting-return {
+  background-color: #ff9800;
+  color: #ffffff;
+}
+
+.returned {
+  background-color: #445d72;
+  color: #ffffff;
+}
+
+.available {
+  background-color: #ffae00;
+  color: #ffffff;
+}
+
+.unavailable {
+  background-color: #445d72;
+  color: #ffffff;
+}
+
+.status-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.status-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.search {
+  background-color: #ffd05b;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.search::before {
+  font-family: "Material Symbols Outlined";
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.text-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 200px;
+  margin-right: 8px;
+}
+
+.book-image {
+  object-fit: cover;
+  width: 40%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
