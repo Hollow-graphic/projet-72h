@@ -3,46 +3,40 @@
         {
             "id": 1,
             "name": "The Great Adventure | John Smith",
-            "status": true,
-            "Account": null,
-            "date": "",
-            "account": ""
+            "status": false,
+            "account": "temp4531",
+            "date": "2026-02-19"
         },
         {
             "id": 2,
             "name": "Mystery of the Old House | Marie Curie",
             "status": false,
-            "Account": null,
-            "date": "",
-            "account": ""
+            "account": "temp4531",
+            "date": "2026-02-19"
         },
         {
             "id": 3,
             "name": "Learning Python | Guido van Rossum",
-            "status": true,
-            "Account": null,
-            "date": null,
-            "account": null
+            "status": false,
+            "account": "temp4538",
+            "date": "2026-02-19"
         },
         {
             "id": 4,
             "name": "History of Art | Leonardo da Vinci",
             "status": false,
-            "Account": "temp",
             "date": ""
         },
         {
             "id": 5,
             "name": "Science and Technology | Nikola Tesla",
             "status": false,
-            "Account": "temp",
             "date": ""
         },
         {
             "id": 6,
             "name": "Cooking 101 | Julia Child",
             "status": false,
-            "Account": "temp",
             "date": ""
         },
         {

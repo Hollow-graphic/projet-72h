@@ -1,0 +1,62 @@
+1-Médiathèque
+2-l'habitat d'urgence
+3-l'éco escape game
+
+disponibilité() {
+-client demande reservation
+<script>
+request flask:
+	id
+</script>
+-server qui cherche dans la base de donné
+open(base_de_donné.json):
+	response = dispo[id]
+-server qui renvoie la disponibilité
+
+-afficher sur le client la réponse
+<button disabled>
+}
+
+Réservation() {
+affichage clair client
+-demander de se connecter si pas deja fais
+CreateAccount() || Login()
+demande de réservé avec une date
+server vérifie et change la valeur
+server repond
+affichage que la résevation a été validé
+affiché sur l'écran de gestionnaire
+}
+
+CreateAccount() {
+demander de se connect par franceConnect
+ajouter à la liste des utilisateur
+avec un uuid aléatoire
+créer un cookie sécurisé
+}
+
+Login() {
+demander de se connect par franceConnect
+ou gmail avec mail de confirmation
+créer un cookie
+}
+
+AffichangeGestionnaire() {
+for i in résevation:
+<div>
+   <label> name </label>
+   <button> valider </button>
+   <button> rendu </button>
+	requet server pour enlever de la liste
+	suprimer de div
+</div>
+ Name | position (valider) (donner)
+}
+
+
+
+
+
+
+
+

@@ -28,6 +28,8 @@ def get_image(item_id):
 
 @app.route('/api/status', methods=['POST'])
 def status():
+    from datetime import datetime
+
     try:
         with open("data.json", "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -39,9 +41,19 @@ def status():
         item_id = payload['id']
         for item in data.get('items', []):
             if item.get('id') == item_id:
-                item['status'] = not item.get('status', False)
-                item['account'] = payload.get('account', "")
-                item['date'] = payload.get('date', "")
+                # toggle availability/borrowed state
+                new_status = not item.get('status', False)
+                item['status'] = new_status
+
+                # when an item is borrowed (status becomes False) save account & date
+                if not new_status:
+                    item['account'] = payload.get('account', "") or ""
+                    # if caller didn't send a date use today
+                    item['date'] = payload.get('date', datetime.now().strftime("%Y-%m-%d"))
+                else:
+                    # return: clear account and optionally record return date if provided
+                    item['account'] = ""
+                    item['date'] = payload.get('date', "") or ""
                 break
         else:
             return jsonify(error="item not found"), 404
