@@ -3,6 +3,9 @@ import json
 
 app = Flask(__name__, static_folder="")
 
+def logprint(message):
+    open("log.txt", "a", encoding="utf-8").write(f"{message}\n")
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -10,6 +13,10 @@ def home():
 @app.route('/admin')
 def admin_page():
     return render_template('admin.html')
+
+@app.route('/login')
+def login_page():
+    return render_template('login.html')
 
 @app.route('/api/message', methods=['POST'])
 def message():
@@ -88,6 +95,22 @@ def get_admin_data():
     with open("data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return jsonify(data)
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    payload = request.get_json(silent=True)
+    if not payload or 'name' not in payload or 'password' not in payload:
+        logprint(payload)
+        return jsonify(error="missing credentials"), 400
+
+    name = payload['name']
+    password = payload['password']
+
+    # Placeholder for actual authentication logic
+    if name == "admin" and password == "password":
+        return jsonify(success=True, user={"name": name, "is_admin": True})
+    else:
+        return jsonify(error="invalid credentials"), 401
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
