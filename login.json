@@ -1,12 +1,17 @@
 [
     {
-    "name": "admin",
-    "password": "24727",
-    "is_admin": true
+        "name": "admin",
+        "password": "2147483648",
+        "is_admin": true
     },
     {
-    "name": "user",
-    "password": "12345",
-    "is_admin": false
+        "name": "user1",
+        "password": "pass123",
+        "is_admin": false
+    },
+    {
+        "name": "user2",
+        "password": "pass456",
+        "is_admin": false
     }
 ]

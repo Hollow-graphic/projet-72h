@@ -10,6 +10,10 @@ def logprint(message):
 def home():
     return render_template('index.html')
 
+@app.route('/index')
+def index_home():
+    return render_template('index.html')
+
 @app.route('/admin')
 def admin_page():
     return render_template('admin.html')
@@ -99,18 +103,20 @@ def get_admin_data():
 @app.route('/api/login', methods=['POST'])
 def login():
     payload = request.get_json(silent=True)
+    logprint(payload)
     if not payload or 'name' not in payload or 'password' not in payload:
-        logprint(payload)
         return jsonify(error="missing credentials"), 400
 
     name = payload['name']
     password = payload['password']
 
     # Placeholder for actual authentication logic
-    if name == "admin" and password == "password":
-        return jsonify(success=True, user={"name": name, "is_admin": True})
-    else:
-        return jsonify(error="invalid credentials"), 401
+    with open("projet-72h/login.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    for user in data:
+        if user.get('name') == name and user.get('password') == password:
+            return jsonify(success=True, user={"name": name, "is_admin": user.get('is_admin', False)})
+    return jsonify(error="invalid credentials"), 401
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
