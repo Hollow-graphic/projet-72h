@@ -10,6 +10,7 @@ document.getElementById("loginBtn").addEventListener("click", () => {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
+            localStorage.setItem("user", name);
             if (data.user.is_admin) {
                 window.location.replace("/admin");
             } else {

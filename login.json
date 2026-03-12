@@ -5,6 +5,11 @@
         "is_admin": true
     },
     {
+        "name": "admin2",
+        "password": "rwqfsfasxc",
+        "is_admin": false
+    },
+    {
         "name": "user1",
         "password": "pass123",
         "is_admin": false
