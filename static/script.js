@@ -150,7 +150,7 @@ document.getElementById("adminBtn").addEventListener("click", () => {
 
                 if (!newStatus) {
                     // admin marking as borrowed
-                    const user = prompt("Nom de l'emprunteur :", account);
+                    const user = localStorage.getItem("user");
                     account = user ? user.trim() : "";
                     date = new Date().toISOString().split('T')[0];
                 } else {

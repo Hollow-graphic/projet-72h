@@ -3,9 +3,9 @@
         {
             "id": 1,
             "name": "The Great Adventure | John Smith",
-            "status": false,
-            "account": "zero435",
-            "date": "2026-03-09"
+            "status": true,
+            "account": "",
+            "date": "2026-03-12"
         },
         {
             "id": 2,
@@ -24,14 +24,16 @@
         {
             "id": 4,
             "name": "History of Art | Leonardo da Vinci",
-            "status": false,
-            "date": ""
+            "status": true,
+            "date": "2026-03-12",
+            "account": ""
         },
         {
             "id": 5,
             "name": "Science and Technology | Nikola Tesla",
-            "status": false,
-            "date": ""
+            "status": true,
+            "date": "2026-03-12",
+            "account": ""
         },
         {
             "id": 6,
@@ -42,17 +44,23 @@
         {
             "id": 7,
             "name": "Travel the World | Marco Polo",
-            "status": false
+            "status": false,
+            "account": "admin",
+            "date": "2026-03-12"
         },
         {
             "id": 8,
             "name": "Philosophy Basics | Socrates",
-            "status": false
+            "status": true,
+            "account": "",
+            "date": "2026-03-12"
         },
         {
             "id": 9,
             "name": "Modern Architecture | Frank Lloyd Wright",
-            "status": false
+            "status": false,
+            "account": "admin",
+            "date": "2026-03-12"
         },
         {
             "id": 10,

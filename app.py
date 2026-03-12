@@ -25,16 +25,14 @@ def login_page():
 @app.route('/api/check-admin', methods=['POST'])
 def check_admin():
     payload = request.get_json(silent=True)
+    userip = request.remote_addr
+    logprint(f"Admin check from {userip} with payload: {payload}")
     name = payload.get('name', 'unknown') if payload else 'unknown'
-    logprint(f"Admin check requested by: {name}")
-    userIP = request.remote_addr
-    logprint(f"IP: {userIP}")
-    with open("ipAdmin.json", "r", encoding="utf-8") as f:
-        admin_ips = json.load(f)
     with open("login.json", "r", encoding="utf-8") as f:
         users = json.load(f)
-    if name: user = next((u for u in users if u.get('name') == name), None)
-    is_admin = any(entry.get('ip') == userIP for entry in admin_ips) or (user and user.get('is_admin', False))
+    user = next((u for u in users if u.get('name') == name), None)
+
+    is_admin = user.get('is_admin', False) if user else False
     return jsonify(is_admin=is_admin)
 
 @app.route('/api/message', methods=['POST'])
