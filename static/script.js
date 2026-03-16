@@ -26,6 +26,7 @@ user = localStorage.getItem("user");
 document.getElementById("loginBtn").addEventListener("click", function() {
     if (user) {
         localStorage.removeItem("user");
+        user = null;
         location.reload();
     } else {
         window.location.replace("/login");

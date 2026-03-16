@@ -33,3 +33,69 @@ Admin check from 127.0.0.1 with payload: {'name': 'admin'}
 Admin check from 127.0.0.1 with payload: {'name': 'admin'}
 Admin check from 127.0.0.1 with payload: {'name': 'admin'}
 Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+Admin check from 127.0.0.1 with payload: {'name': None}
+/api/login | {'name': 'test', 'password': 'test'}
+1551645532785494576 | test
+/api/status | {'id': 1, 'status': False, 'account': 'test', 'date': '2026-03-16'}
+/api/status | {'id': 1, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/login | {'name': 'admin', 'password': '2147483648'}
+8178715642382924230 | admin
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+/api/status | {'id': 2, 'status': False, 'account': 'admin', 'date': '2026-03-16'}
+/api/status | {'id': 2, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 9, 'status': True, 'account': '', 'date': '2026-03-16'}
+Admin check from 127.0.0.1 with payload: {'name': None}
+/api/login | {'name': 'test', 'password': 'test'}
+1551645532785494576 | test
+/api/status | {'id': 1, 'status': False, 'account': 'test', 'date': '2026-03-16'}
+/api/status | {'id': 3, 'status': False, 'account': 'test', 'date': '2026-03-16'}
+/api/status | {'id': 5, 'status': False, 'account': 'test', 'date': '2026-03-16'}
+/api/status | {'id': 6, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 6, 'status': False, 'account': 'test', 'date': '2026-03-16'}
+/api/login | {'name': 'admin', 'password': '2147483648'}
+8178715642382924230 | admin
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+/api/status | {'id': 1, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 3, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 5, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 6, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 14, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 12, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 11, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 7, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 16, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 17, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 19, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 21, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 22, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 23, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 24, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 26, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 28, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 29, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 31, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 32, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 34, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 35, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 37, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 38, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 40, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 1, 'status': False, 'account': 'admin', 'date': '2026-03-16'}
+/api/status | {'id': 1, 'status': True, 'account': '', 'date': '2026-03-16'}
+/api/status | {'id': 2, 'status': False, 'account': 'admin', 'date': '2026-03-16'}
+/api/status | {'id': 2, 'status': True, 'account': '', 'date': '2026-03-16'}
+Admin check from 127.0.0.1 with payload: {'name': None}
+/api/login | {'name': 'test', 'password': 'test'}
+-5660933205158220612 | test
+/api/login | {'name': 'test', 'password': 'test'}
+-5660933205158220612 | test
+/api/login | {'name': 'test', 'password': 'test'}
+-5660933205158220612 | test
+/api/register | test | -5660933205158220612
+/api/register | test | -5660933205158220612
+/api/login | {'name': 'test', 'password': 'test'}
+-5660933205158220612 | test
