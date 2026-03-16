@@ -117,12 +117,15 @@ def get_admin_data():
 @app.route('/api/login', methods=['POST'])
 def login():
     payload = request.get_json(silent=True)
+    logprint(f"/api/login | {payload}")
     #ogprint(payload)
     if not payload or 'name' not in payload or 'password' not in payload:
         return jsonify(error="missing credentials"), 400
 
     name = payload['name']
     password = payload['password']
+    password = str(hash(password))
+    logprint(f"{password} | {name}")
 
     # Placeholder for actual authentication logic
     with open("login.json", "r", encoding="utf-8") as f:
@@ -141,6 +144,8 @@ def register():
     name = payload['name']
     password = payload['password']
 
+    password = str(hash(password))
+    logprint(f"/api/register | {name} | {password}")
     with open("login.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 

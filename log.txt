@@ -1,27 +1,35 @@
-IP:127.0.0.1
-IP: 127.0.0.1
-IP: 127.0.0.1
-IP: 127.0.0.1
-IP: 127.0.0.1
-IP: 127.0.0.1
-IP: 127.0.0.1
-Admin check requested by: None
-IP: 127.0.0.1
-Admin check requested by: admin2
-IP: 127.0.0.1
-Admin check requested by: admin2
-IP: 127.0.0.1
-Admin check requested by: None
-IP: 127.0.0.1
-Admin check requested by: admin
-IP: 127.0.0.1
-Admin check requested by: admin2
-IP: 127.0.0.1
-Admin check requested by: admin2
-IP: 127.0.0.1
+/api/login | {'name': '', 'password': ''}
+/api/login | {'name': 'test3', 'password': 'str(hash('}
+/api/login | {'name': 'test3', 'password': 'test2'}
+1462466998742819484 | test3
+/api/login | {'name': 'test3', 'password': 'test2'}
+1462466998742819484 | test3
+/api/login | {'name': 'test4', 'password': 'test3'}
+-3269876020734573210 | test4
+/api/login | {'name': 'test4', 'password': 'test3'}
+-3269876020734573210 | test4
+/api/login | {'name': 'test4', 'password': 'test3'}
+-3269876020734573210 | test4
+/api/login | {'name': 'admin', 'password': '2147483648'}
+8178715642382924230 | admin
+/api/login | {'name': 'admin', 'password': '2147483648'}
+8178715642382924230 | admin
 Admin check from 127.0.0.1 with payload: {'name': 'admin'}
-Admin check from 127.0.0.1 with payload: {'name': None}
-Admin check from 127.0.0.1 with payload: {'name': 'admin2'}
-Admin check from 127.0.0.1 with payload: {'name': 'admin2'}
+/api/register | test5 | 9010674192052184762
+/api/login | {'name': 'test5', 'password': 'test5'}
+9010674192052184762 | test5
+/api/register | admin2 | -2368350200828319495
+/api/login | {'name': 'admin2', 'password': 'rwqfsfasxc'}
+-2368350200828319495 | admin2
+/api/register | user1 | 1227807424434316314
+/api/register | user2 | -5000386869262551068
+/api/register | test | 1551645532785494576
+/api/login | {'name': 'admin', 'password': '2147483648'}
+8178715642382924230 | admin
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+/api/login | {'name': 'admin', 'password': '2147483648'}
+8178715642382924230 | admin
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
+Admin check from 127.0.0.1 with payload: {'name': 'admin'}
 Admin check from 127.0.0.1 with payload: {'name': 'admin'}
 Admin check from 127.0.0.1 with payload: {'name': 'admin'}

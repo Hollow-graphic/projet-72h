@@ -32,15 +32,6 @@ document.getElementById("loginBtn").addEventListener("click", function() {
     }
 });
 
-document.getElementById("loginBtn").addEventListener("click", function() {
-    window.location.replace("/login");
-});
-
-document.getElementById("logoutBtn").addEventListener("click", function() {
-    localStorage.removeItem("user");
-    location.reload();
-});
-
 document.getElementById("sendBtn").addEventListener("click", () => {
     const name = document.getElementById("nameInput").value;
     fetch('/api/message', {
