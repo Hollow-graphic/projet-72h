@@ -1,22 +1,27 @@
 [
     {
         "name": "admin",
-        "password": "2147483648",
+        "password": "8178715642382924230",
         "is_admin": true
     },
     {
         "name": "admin2",
-        "password": "rwqfsfasxc",
+        "password": "-2368350200828319495",
         "is_admin": false
     },
     {
         "name": "user1",
-        "password": "pass123",
+        "password": "1227807424434316314",
         "is_admin": false
     },
     {
         "name": "user2",
-        "password": "pass456",
+        "password": "-5000386869262551068",
+        "is_admin": false
+    },
+    {
+        "name": "test",
+        "password": "1551645532785494576",
         "is_admin": false
     }
 ]
