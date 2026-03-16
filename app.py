@@ -59,8 +59,9 @@ def status():
             data = json.load(f)
 
         payload = request.get_json(silent=True)
-        if not payload or 'id' not in payload:
-            return jsonify(error="missing id"), 400
+        logprint(f"/api/status | {payload}")
+        if not payload or 'id' not in payload or 'account' not in payload:
+            return jsonify(error="missing required fields"), 400
 
         item_id = payload['id']
         for item in data.get('items', []):
@@ -130,6 +131,29 @@ def login():
         if user.get('name') == name and user.get('password') == password:
             return jsonify(success=True, user={"name": name, "is_admin": user.get('is_admin', False)})
     return jsonify(error="invalid credentials"), 401
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    payload = request.get_json(silent=True)
+    if not payload or 'name' not in payload or 'password' not in payload:
+        return jsonify(error="missing credentials"), 400
+
+    name = payload['name']
+    password = payload['password']
+
+    with open("login.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    if any(user.get('name') == name for user in data):
+        return jsonify(error="username already exists"), 409
+
+    new_user = {"name": name, "password": password, "is_admin": False}
+    data.append(new_user)
+
+    with open("login.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+    return jsonify(success=True, user={"name": name, "is_admin": False})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

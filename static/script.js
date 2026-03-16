@@ -17,6 +17,30 @@ if (location.pathname == "/admin") {
     .catch(error => console.error('Erreur:', error));
 }
 
+user = localStorage.getItem("user");
+    if (user) {
+        document.getElementById("loginBtn").textContent = "Logout";
+    } else {
+        document.getElementById("loginBtn").textContent = "Login";
+    }
+document.getElementById("loginBtn").addEventListener("click", function() {
+    if (user) {
+        localStorage.removeItem("user");
+        location.reload();
+    } else {
+        window.location.replace("/login");
+    }
+});
+
+document.getElementById("loginBtn").addEventListener("click", function() {
+    window.location.replace("/login");
+});
+
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    localStorage.removeItem("user");
+    location.reload();
+});
+
 document.getElementById("sendBtn").addEventListener("click", () => {
     const name = document.getElementById("nameInput").value;
     fetch('/api/message', {
@@ -64,9 +88,8 @@ document.getElementById("sendBtn").addEventListener("click", () => {
                 const newStatus = !item.status;
                 let account = item.account || "";
                 let date = item.date || "";
-
                 if (!newStatus) {
-                    const user = document.getElementById("AccountInput").value
+                    const user = localStorage.getItem("user")
                     account = user ? user.trim() : "";
                     date = new Date().toISOString().split('T')[0];
                 } else {
