@@ -38,7 +38,7 @@ document.getElementById("sendBtn").addEventListener("click", () => {
     fetch('/api/message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name })
+        body: JSON.stringify({ name: name, account: localStorage.getItem("user") })
     })
     .then(response => response.json())
     .then(data => {

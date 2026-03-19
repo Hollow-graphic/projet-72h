@@ -1,3 +1,5 @@
+from hashlib import sha256
+
 from flask import Flask, render_template, request, jsonify
 import json
 
@@ -5,6 +7,9 @@ app = Flask(__name__, static_folder="")
 
 def logprint(message):
     open("log.txt", "a", encoding="utf-8").write(f"{message}\n")
+
+def hash(password):
+    return sha256(password.encode('utf-8')).hexdigest()
 
 @app.route('/')
 def home():
@@ -26,7 +31,7 @@ def login_page():
 def check_admin():
     payload = request.get_json(silent=True)
     userip = request.remote_addr
-    logprint(f"Admin check from {userip} with payload: {payload}")
+    logprint(f"/api/check-admin | {payload['name']} | {userip}")
     name = payload.get('name', 'unknown') if payload else 'unknown'
     with open("login.json", "r", encoding="utf-8") as f:
         users = json.load(f)
@@ -37,6 +42,9 @@ def check_admin():
 
 @app.route('/api/message', methods=['POST'])
 def message():
+    payload = request.get_json(silent=True)
+    account = payload.get('account', 'unknown') if payload else 'unknown'
+    logprint(f"/api/message     | {account}")
     with open("data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return jsonify(data)
@@ -59,7 +67,10 @@ def status():
             data = json.load(f)
 
         payload = request.get_json(silent=True)
-        logprint(f"/api/status | {payload}")
+        if not payload['status']:
+            logprint(f"/api/status      | {payload['id']} | {payload['account']}")
+        else:
+            logprint(f"/api/status      | {payload['id']} | returned")
         if not payload or 'id' not in payload or 'account' not in payload:
             return jsonify(error="missing required fields"), 400
 
@@ -120,7 +131,6 @@ def get_admin_data():
 @app.route('/api/login', methods=['POST'])
 def login():
     payload = request.get_json(silent=True)
-    logprint(f"/api/login | {payload}")
     #ogprint(payload)
     if not payload or 'name' not in payload or 'password' not in payload:
         return jsonify(error="missing credentials"), 400
@@ -128,7 +138,7 @@ def login():
     name = payload['name']
     password = payload['password']
     password = str(hash(password))
-    logprint(f"{password} | {name}")
+    logprint(f"/api/login       | {name} | {password}")
 
     # Placeholder for actual authentication logic
     with open("login.json", "r", encoding="utf-8") as f:
