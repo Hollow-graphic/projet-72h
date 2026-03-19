@@ -1,27 +1,7 @@
 [
     {
-        "name": "admin",
-        "password": "8178715642382924230",
-        "is_admin": true
-    },
-    {
-        "name": "admin2",
-        "password": "-2368350200828319495",
-        "is_admin": false
-    },
-    {
-        "name": "user1",
-        "password": "1227807424434316314",
-        "is_admin": false
-    },
-    {
-        "name": "user2",
-        "password": "-5000386869262551068",
-        "is_admin": false
-    },
-    {
-        "name": "test",
-        "password": "-5660933205158220612",
+        "name": "temp",
+        "password": "a6864eb339b0e1f6e00d75293a8840abf069a2c0fe82e6e53af6ac099793c1d5",
         "is_admin": false
     }
 ]
