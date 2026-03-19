@@ -1,20 +1,62 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Médiathèque</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Médiathèque</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
 </head>
 <body>
-    <h1>Médiathèque</h1>
-    <button class="admin" id="loginBtn">Login</button>
-    <input type="text" class="text-input" id="nameInput" placeholder="Nom du livre">
-    <button class="search" id="sendBtn">Chercher</button>
-    <button class="hide" id="adminBtn">Refresh</button>
 
-    <div id="labelContainer"></div> <!-- Add a slider here -->
-    <p id="serverReply"></p>
+  <!-- ── Header ───────────────────────────────────────── -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__brand">
+        <span class="header__icon material-symbols-outlined">local_library</span>
+        <h1 class="header__title">Médiathèque</h1>
+      </div>
+      <button class="btn btn--ghost" id="loginBtn">
+        <span class="material-symbols-outlined">person</span>
+        Connexion
+      </button>
+    </div>
+  </header>
 
-    <script src="{{ url_for('static', filename='static/script.js') }}"></script>
+  <!-- ── Main ─────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Search section -->
+    <section class="search-section">
+      <p class="search-section__label">Rechercher un ouvrage</p>
+      <div class="search-bar">
+        <span class="search-bar__icon material-symbols-outlined">search</span>
+        <input
+          type="text"
+          class="search-bar__input"
+          id="nameInput"
+          placeholder="Titre, auteur, ISBN…"
+          autocomplete="off"
+        >
+        <button class="btn btn--accent" id="sendBtn">Chercher</button>
+      </div>
+      <p class="server-reply" id="serverReply"></p>
+    </section>
+
+    <!-- Filter / slider container (populated by JS) -->
+    <section class="filter-section" id="labelContainer" aria-label="Filtres"></section>
+
+    <!-- Book grid (populated by JS) -->
+    <section class="book-grid" id="bookGrid" aria-label="Résultats"></section>
+
+  </main>
+
+  <!-- Hidden admin button (used by JS) -->
+  <button class="hide" id="adminBtn">Refresh</button>
+
+  <script src="{{ url_for('static', filename='static/script.js') }}"></script>
 </body>
 </html>

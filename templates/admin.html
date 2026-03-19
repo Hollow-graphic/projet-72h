@@ -1,25 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration — Médiathèque</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
 </head>
 <body>
-    <h1>Admin Page</h1>
-    <button class="admin" id="loginBtn">Login</button>
-    <input type="text" class="text-input" id="nameInput" placeholder="Nom ou id du livre">
-    <button class="search" id="sendBtn">Chercher</button>
-    <button class="search" id="adminBtn">Rendre</button>
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__brand">
+        <span class="header__icon material-symbols-outlined">admin_panel_settings</span>
+        <h1 class="header__title">Administration</h1>
+      </div>
+      <button class="btn btn--ghost" id="loginBtn">
+        <span class="material-symbols-outlined">person</span>
+        Connexion
+      </button>
+    </div>
+  </header>
+  <main class="main">
 
-    <input type="text" class="text-input" id="AccountInput" placeholder="Nom du compte">
-    <input type="date" id ="dateInput">
+    <section class="admin-card">
+      <h2 class="admin-card__title">
+        <span class="material-symbols-outlined">search</span>
+        Rechercher un ouvrage
+      </h2>
 
-    <div id="labelContainer"></div>
-    <p id="serverReply"></p>
+      <div class="search-bar">
+        <span class="search-bar__icon material-symbols-outlined">book</span>
+        <input
+          type="text"
+          class="search-bar__input"
+          id="nameInput"
+          placeholder="Nom ou ID du livre"
+          autocomplete="off"
+        >
+        <button class="btn btn--accent" id="sendBtn">Chercher</button>
+      </div>
 
-    <script 
-        src="{{ url_for('static', filename='static/script.js') }}">
-    </script>
+      <p class="server-reply" id="serverReply"></p>
+    </section>
+
+    <section class="admin-card">
+      <h2 class="admin-card__title">
+        <span class="material-symbols-outlined">assignment_return</span>
+        Enregistrer un retour
+      </h2>
+
+      <div class="form-row">
+        <div class="field">
+          <label class="field__label" for="AccountInput">Compte emprunteur</label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined">person_search</span>
+            <input
+              type="text"
+              class="field__input"
+              id="AccountInput"
+              placeholder="Nom du compte"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="dateInput">Date de retour</label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <input
+              type="date"
+              class="field__input"
+              id="dateInput"
+            >
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn--primary" id="adminBtn">
+        <span class="material-symbols-outlined">check_circle</span>
+        Confirmer le retour
+      </button>
+    </section>
+
+    <section class="filter-section" id="labelContainer" aria-label="Résultats"></section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='static/script.js') }}"></script>
 </body>
 </html>

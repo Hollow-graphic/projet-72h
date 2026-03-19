@@ -1,23 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — Médiathèque</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
 </head>
-<body>
-    <div class="loginDiv" id="loginDiv">
-    <h1>Login Page</h1>
-    <input type="text" class="text-input" id="nameInput" placeholder="Nom du compte"> <br>
-    <input type="password" class="text-input" id="passwordInput" placeholder="Mot de passe"> <br>
-    <button class="search" id="loginBtn">Login</button>
-    <button class="search" id="registerBtn">Register</button>
-    <label id="errorLabel"></label>
-    <p id="serverReply"></p>
+<body class="login-page">
+
+  <div class="login-card" id="loginDiv">
+
+    <!-- Brand -->
+    <div class="login-card__brand">
+      <span class="material-symbols-outlined login-card__brand-icon">local_library</span>
+      <span class="login-card__brand-name">Médiathèque</span>
     </div>
 
-    <script 
-        src="{{ url_for('static', filename='static/scriptlogin.js') }}">
-    </script>
+    <h1 class="login-card__title">Connexion</h1>
+    <p class="login-card__subtitle">Accédez à votre espace personnel</p>
+
+    <!-- Fields -->
+    <div class="field">
+      <label class="field__label" for="nameInput">Nom du compte</label>
+      <div class="input-wrap">
+        <span class="material-symbols-outlined">person</span>
+        <input
+          type="text"
+          class="field__input"
+          id="nameInput"
+          placeholder="Votre identifiant"
+          autocomplete="username"
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="passwordInput">Mot de passe</label>
+      <div class="input-wrap">
+        <span class="material-symbols-outlined">lock</span>
+        <input
+          type="password"
+          class="field__input"
+          id="passwordInput"
+          placeholder="••••••••"
+          autocomplete="current-password"
+        >
+        <button class="input-wrap__toggle" id="togglePassword" type="button" tabindex="-1" aria-label="Afficher le mot de passe">
+          <span class="material-symbols-outlined">visibility</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Error / reply -->
+    <p class="login-card__error" id="errorLabel" role="alert" aria-live="polite"></p>
+    <p class="server-reply" id="serverReply"></p>
+
+    <!-- Actions -->
+    <div class="login-card__actions">
+      <button class="btn btn--accent login-card__btn" id="loginBtn">
+        <span class="material-symbols-outlined">login</span>
+        Se connecter
+      </button>
+      <button class="btn btn--outline login-card__btn" id="registerBtn">
+        <span class="material-symbols-outlined">person_add</span>
+        Créer un compte
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      const input = document.getElementById('passwordInput');
+      const icon = this.querySelector('.material-symbols-outlined');
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      icon.textContent = isHidden ? 'visibility_off' : 'visibility';
+    });
+  </script>
+  <script src="{{ url_for('static', filename='static/scriptlogin.js') }}"></script>
 </body>
 </html>
