@@ -1,27 +1,32 @@
 [
     {
         "name": "admin",
-        "password": "8178715642382924230",
+        "password": "39f8d58187887b481fe709f7b323f2b876d9f522e9f7afef815c2089084a36d7",
         "is_admin": true
     },
     {
         "name": "admin2",
-        "password": "-2368350200828319495",
+        "password": "c9fb66edf8372c42245d24d8b098f64098039e833e80807ed0c990974f183612",
         "is_admin": false
     },
     {
         "name": "user1",
-        "password": "1227807424434316314",
+        "password": "9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c",
         "is_admin": false
     },
     {
         "name": "user2",
-        "password": "-5000386869262551068",
+        "password": "1d4598d1949b47f7f211134b639ec32238ce73086a83c2f745713b3f12f817e5",
         "is_admin": false
     },
     {
         "name": "test",
-        "password": "-5660933205158220612",
+        "password": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+        "is_admin": false
+    },
+    {
+        "name": "test2",
+        "password": "60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752",
         "is_admin": false
     }
 ]

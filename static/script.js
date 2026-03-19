@@ -128,7 +128,7 @@ document.getElementById("adminBtn").addEventListener("click", () => {
         if (input.value !== "") {
             const value = input.value.toLowerCase();
             data.items = data.items.filter(item =>
-                item.name.toLowerCase().includes(value) || // ignore la casse sur le name
+                item.name.toLowerCase().includes(value) || 
                 item.id.toString() === input.value
             );
             search = true;

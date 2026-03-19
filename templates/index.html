@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
 </head>
 <body>
-
-  <!-- ── Header ───────────────────────────────────────── -->
   <header class="header">
     <div class="header__inner">
       <div class="header__brand">
@@ -26,10 +24,7 @@
     </div>
   </header>
 
-  <!-- ── Main ─────────────────────────────────────────── -->
   <main class="main">
-
-    <!-- Search section -->
     <section class="search-section">
       <p class="search-section__label">Rechercher un ouvrage</p>
       <div class="search-bar">
@@ -46,15 +41,12 @@
       <p class="server-reply" id="serverReply"></p>
     </section>
 
-    <!-- Filter / slider container (populated by JS) -->
     <section class="filter-section" id="labelContainer" aria-label="Filtres"></section>
 
-    <!-- Book grid (populated by JS) -->
     <section class="book-grid" id="bookGrid" aria-label="Résultats"></section>
 
   </main>
 
-  <!-- Hidden admin button (used by JS) -->
   <button class="hide" id="adminBtn">Refresh</button>
 
   <script src="{{ url_for('static', filename='static/script.js') }}"></script>
