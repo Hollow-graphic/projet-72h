@@ -28,5 +28,10 @@
         "name": "test2",
         "password": "60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752",
         "is_admin": false
+    },
+    {
+        "name": "temp",
+        "password": "a6864eb339b0e1f6e00d75293a8840abf069a2c0fe82e6e53af6ac099793c1d5",
+        "is_admin": false
     }
 ]
