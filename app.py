@@ -9,6 +9,7 @@ def logprint(message):
     open("log.txt", "a", encoding="utf-8").write(f"{message}\n")
 
 def hash(password):
+    password = "↑↑↓↓←→←→BA" + str(password)
     return sha256(password.encode('utf-8')).hexdigest()
 
 @app.route('/')

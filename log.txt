@@ -99,3 +99,35 @@ Admin check from 127.0.0.1 with payload: {'name': None}
 /api/register | test | -5660933205158220612
 /api/login | {'name': 'test', 'password': 'test'}
 -5660933205158220612 | test
+/api/login       | admin | 39f8d58187887b481fe709f7b323f2b876d9f522e9f7afef815c2089084a36d7
+/api/check-admin | admin | 127.0.0.1
+/api/login       | admin | $argon2id$v=19$m=65536,t=3,p=4$OKfL/WwBxZi2e+CX/pcG3Q$HH2qCCrtYGiwhcs+wisEmYFbdXRluT8SZ1wm2JP3Cfw
+/api/login       | admin | $argon2id$v=19$m=65536,t=3,p=4$Q7zo+J8cIQrWzz7AwRx9JQ$7dM9P6ppCLkEuVOrzFgwTDh5rzVVS735tdC8lujqIOs
+/api/login       | admin | M/kVSFNyDHSA+NlRsyWnCw$3EGooh5R91UXC0pAt9aJGzRozPnN9uubCrh104OlLVk
+/api/login       | admin | Tp8LdA5F6+9+qd3KNS4Xvg$X63HftlnwJaZm4qAe8eyrrSDTvHOUMU7AUFR4gZAPEA
+/api/login       | admin | 7qM0sMpIDaJzYTMWeC+2Zw$q6cXuSR8cSvCSf9txMi7ebas3c66Km+UVzuV66RPJq4
+/api/login       | admin | WFai7FQBBwF8NpEq0pdGZQ$jtL+1d7buIc86exIklMf1xf09zCJjfrsaRiYcXbw9+id
+/api/login       | admin2 | c9fb66edf8372c42245d24d8b098f64098039e833e80807ed0c990974f183612
+/api/login       | admin | 92108538c05f311b590691cc37b13067a2300cda37772f18feee61f99a1b673c
+/api/login       | admin | 64a8cf0796d6f5d05226c22aa80d844ad7aa6b2659bc7c7099f4d1a206bfce33
+/api/login       | admin | 2f914834b48851bc242c57c4a831a47c441bbedb555e523684e52683f5e38c95
+/api/login       | admin | 9e13125b7ec1a680f5662ead746cc1ec039585723921f55383df0d00eea1c6e7
+/api/login       | admin | b62d6f2ea0d97444d90d103c1acf4b4205c2b07e5f6e14e279c6ac10ecff43d5
+/api/login       | admin | 48ed940576ae7f5ddf5c1fe00a738cd28bab291e016407f13d6cc0c843a958dd
+/api/login       | admin | afcacf6825712fc5d8c91f247fbd6ad982886da010d5fb4bda47929a76e93e12
+/api/login       | admin | 598d7b81f867d5c4bb1b3fe613049e060874812b4189d1cf393ddc1b0c9bf7a5
+/api/login       | admin | fbc23a0943185372f033af3b380ec1c7cc0122e0353ae3f3d4e026a5aa563bd1
+/api/login       | admin | 2ce43c9537d10e9c093ca4e92021ea16ee6ba90d68732edf31c687529aaa424c
+/api/login       | admin | 107a29c8e65bdf69778c5cf10ca3d728d0e8f4d8e97f3cfa93c67f5e7cf6eb5c
+/api/login       | admin | 107a29c8e65bdf69778c5cf10ca3d728d0e8f4d8e97f3cfa93c67f5e7cf6eb5c
+/api/check-admin | admin | 127.0.0.1
+/api/check-admin | None | 127.0.0.1
+/api/login       | admin | acb16af581464e98280641e0031039d3477595577ac454d82bf9e9549ce6c7fa
+/api/login       | admin2 | a47f2d81b6df296c5179dc66c6acfd69322c11b8db9e41b4ff8b30b6fac16c3b
+/api/login       | user123 | 2829c60f7ff3e527809446608f0a2d1d54ec0edef5e0a8fb3a0de2c335990851
+/api/login       | user123 | f0f339c742b637530660e4acc23912a55890612409edca4564c42aaf25eea983
+/api/login       | test | a990e1eb0bae835e4458532a1ddb3ba1940dd89fa08cc2934af539801c6e7c3d
+/api/login       | test | a6f7801ebf1c590d5fbcbcd60cfee45ccc5346b11cb52114973e0b525e3a1e87
+/api/login       | test | 3647fd2d3180f75f14c4b6603de010bf837de3380c77b452e54c654035ca0fb7
+/api/login       | temp | 3647fd2d3180f75f14c4b6603de010bf837de3380c77b452e54c654035ca0fb7
+/api/login       | admin2 | a47f2d81b6df296c5179dc66c6acfd69322c11b8db9e41b4ff8b30b6fac16c3b
