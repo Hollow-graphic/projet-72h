@@ -17,6 +17,10 @@
         <span class="header__icon material-symbols-outlined">admin_panel_settings</span>
         <h1 class="header__title">Administration</h1>
       </div>
+      <button class="btn btn--accent" id="submitBtn">
+        <span class="material-symbols-outlined">download</span>
+        submit
+      </button>
       <button class="btn btn--ghost" id="loginBtn">
         <span class="material-symbols-outlined">person</span>
         Connexion
@@ -41,49 +45,12 @@
           autocomplete="off"
         >
         <button class="btn btn--accent" id="sendBtn">Chercher</button>
+        <button class="btn btn--accent" id="adminBtn">
+          Confirmer un retour
+        </button>
       </div>
 
       <p class="server-reply" id="serverReply"></p>
-    </section>
-
-    <section class="admin-card">
-      <h2 class="admin-card__title">
-        <span class="material-symbols-outlined">assignment_return</span>
-        Enregistrer un retour
-      </h2>
-
-      <div class="form-row">
-        <div class="field">
-          <label class="field__label" for="AccountInput">Compte emprunteur</label>
-          <div class="input-wrap">
-            <span class="material-symbols-outlined">person_search</span>
-            <input
-              type="text"
-              class="field__input"
-              id="AccountInput"
-              placeholder="Nom du compte"
-              autocomplete="off"
-            >
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="field__label" for="dateInput">Date de retour</label>
-          <div class="input-wrap">
-            <span class="material-symbols-outlined">calendar_today</span>
-            <input
-              type="date"
-              class="field__input"
-              id="dateInput"
-            >
-          </div>
-        </div>
-      </div>
-
-      <button class="btn btn--primary" id="adminBtn">
-        <span class="material-symbols-outlined">check_circle</span>
-        Confirmer le retour
-      </button>
     </section>
 
     <section class="filter-section" id="labelContainer" aria-label="Résultats"></section>

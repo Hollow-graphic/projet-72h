@@ -1,4 +1,5 @@
 from hashlib import sha256
+from datetime import datetime
 
 from flask import Flask, render_template, request, jsonify
 import json
@@ -6,7 +7,7 @@ import json
 app = Flask(__name__, static_folder="")
 
 def logprint(message):
-    open("log.txt", "a", encoding="utf-8").write(f"{message}\n")
+    open("log.txt", "a", encoding="utf-8").write(f"[{datetime.now().strftime("%H:%M:%S")}] {message}\n")
 
 def hash(password):
     password = "↑↑↓↓←→←→BA" + str(password)
@@ -59,14 +60,20 @@ def get_image(item_id):
             return jsonify(image_url=item.get('image_url'))
     return jsonify(error="image not found"), 404
 
+@app.route('/api/multipleStatus', methods=['POST'])
+def multipleStatus():
+    payload = request.get_json(silent=True)
+#    logprint(f"/api/multipleStatus | {payload}")
+#    for key in payload:
+#        with status() as payload:
+#            payload = payload[key]
+    return jsonify(True)
+
 @app.route('/api/status', methods=['POST'])
 def status():
-    from datetime import datetime
-
     try:
         with open("data.json", "r", encoding="utf-8") as f:
             data = json.load(f)
-
         payload = request.get_json(silent=True)
         if not payload['status']:
             logprint(f"/api/status      | {payload['id']} | {payload['account']}")

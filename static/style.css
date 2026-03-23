@@ -173,7 +173,7 @@ body {
   padding: 6px 6px 6px 16px;
   gap: 8px;
   box-shadow: var(--shadow-sm);
-  max-width: 520px;
+  max-width: 580px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 

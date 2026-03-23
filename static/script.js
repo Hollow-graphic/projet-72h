@@ -1,3 +1,13 @@
+bookList =  []
+
+document.getElementById("submitBtn").addEventListener("click", () => {
+    fetch('/api/multipleStatus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookList)
+    })
+});
+
 if (location.pathname == "/admin") {
     accountName = localStorage.getItem("user");
     if (!accountName) {
@@ -67,12 +77,6 @@ document.getElementById("sendBtn").addEventListener("click", () => {
             statusButton.className = item.status ? "available" : "unavailable";
             statusButton.classList.add("status-button");
             statusButton.classList.add(item.status ? "available" : "unavailable");
-            if (!item.status && item.account) {
-                const info = document.createElement("div");
-                info.className = "borrow-info";
-                info.textContent = `Emprunté par ${item.account}${item.date ? ' le ' + item.date : ''}`;
-                label.appendChild(info);
-            }
             statusButton.addEventListener("click", () => {
                 if (localStorage.getItem("user") == null) {
                     window.location.replace("/login");
@@ -82,13 +86,13 @@ document.getElementById("sendBtn").addEventListener("click", () => {
                 let date = item.date || "";
                 if (!newStatus) {
                     const user = localStorage.getItem("user")
+                    bookList.push({id: item.id, date: new Date().toISOString().split('T')[0]});
+                    console.log(bookList);
                     account = user ? user.trim() : "";
-                    date = new Date().toISOString().split('T')[0];
                 } else {
                     account = "";
-                    date = new Date().toISOString().split('T')[0];
                 }
-
+                date = new Date().toISOString().split('T')[0];
                 fetch('/api/status', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -140,13 +144,15 @@ document.getElementById("adminBtn").addEventListener("click", () => {
             label.className = "block";
             container.appendChild(label);
             const account = document.createElement("div");
-            account.textContent = "pris par " + (item.account || "inconnu") + (item.date ? ' le ' + item.date : '');
-            account.className = "account";
-            label.appendChild(account);
             const image = document.createElement("img");
             image.src = `/image/${item.id}.png`;
             image.className = "book-image";
             label.appendChild(image);
+            /*
+            account.textContent = "pris par " + (item.account || "inconnu") + (item.date ? ' le ' + item.date : '');
+            account.className = "account";
+            label.appendChild(account);
+            */
             /*
             const Title = document.createElement("div");
             Title.textContent = item.name;
@@ -154,7 +160,8 @@ document.getElementById("adminBtn").addEventListener("click", () => {
             label.appendChild(Title);
             */
             const statusButton = document.createElement("button");
-            statusButton.textContent = item.status ? "Rendu" : "Rendre";
+            //statusButton.textContent = item.status ? "Rendu" : "Rendre";
+            statusButton.textContent = "pris par " + (item.account || "inconnu") + (item.date ? ' pour le ' + item.date : '');
             statusButton.className = item.status ? "returned" : "waiting-return";
             statusButton.classList.add("status-button");
             statusButton.classList.add(item.status ? "returned" : "waiting-return");
