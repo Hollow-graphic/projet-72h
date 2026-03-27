@@ -20,6 +20,7 @@ set /A response="(x to exit) which cables to you cut ?:"
 call :verifyCables !response!
 goto startup
 
+REM 1=RED 2=YELLOW 3=BLUE 4=BLACK
 :intToColor
 if "%~1"=="1" (
     set color=!RED!
@@ -36,10 +37,25 @@ REM S'il n'y a pas de fil rouge, coupez le deuxième fil.
 REM Sinon, si le dernier fil est blanc, coupez le dernier fil.
 REM Sinon, s'il y a plus d'un fil bleu, coupez le dernier fil bleu.
 REM Sinon, coupez le dernier fil.
+
 :verifyCables
+set rules1 = 0
+set rules2 = 0
+set rules3 = 0
+set rules3bis = 0
 if !nbCables!=3 (
+	for /l %%i in (1,1,!nbCables!) do (
+		if listColor[%%i]=1 (rules1=1)
+		else if listColor[%%i]=3 (
+			rules3=!rule3!+1
+			rules3bis=%%i
+		)
+	)
+	if rules1=0
+	if listColor[!nbCables!]=4 (rule2=1)
 	
 ) else (
 	echo undifined rules
 )
 exit /b
+
