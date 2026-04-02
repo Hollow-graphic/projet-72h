@@ -1,6 +1,13 @@
-bookList =  []
+//booklist = localStorage.getItem("booklist")
+//if (booklist) {} else (booklist = [])
+booklist = []
+
 
 document.getElementById("submitBtn").addEventListener("click", () => {
+    //localStorage.setItem("booklist", booklist)
+    if (localStorage.getItem("user") == null) {
+        window.location.replace("/login");
+    }
     fetch('/api/multipleStatus', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -78,21 +85,18 @@ document.getElementById("sendBtn").addEventListener("click", () => {
             statusButton.classList.add("status-button");
             statusButton.classList.add(item.status ? "available" : "unavailable");
             statusButton.addEventListener("click", () => {
-                if (localStorage.getItem("user") == null) {
-                    window.location.replace("/login");
-                }
                 const newStatus = !item.status;
                 let account = item.account || "";
                 let date = item.date || "";
+                date = new Date().toISOString().split('T')[0];
                 if (!newStatus) {
                     const user = localStorage.getItem("user")
-                    bookList.push({id: item.id, date: new Date().toISOString().split('T')[0]});
-                    console.log(bookList);
                     account = user ? user.trim() : "";
+                    bookList.push({id: item.id, status: newStatus, account: account, date: date});
+                    console.log(bookList);
                 } else {
                     account = "";
                 }
-                date = new Date().toISOString().split('T')[0];
                 fetch('/api/status', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

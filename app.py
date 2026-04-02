@@ -13,6 +13,47 @@ def hash(password):
     password = "↑↑↓↓←→←→BA" + str(password)
     return sha256(password.encode('utf-8')).hexdigest()
 
+def changeStatus(payload):
+    try:
+        with open("data.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not payload['status']:
+            logprint(f"/api/status      | {payload['id']} | {payload['account']}")
+        else:
+            logprint(f"/api/status      | {payload['id']} | returned")
+        if not payload or 'id' not in payload or 'account' not in payload:
+            return jsonify(error="missing required fields"), 400
+
+        item_id = payload['id']
+        for item in data.get('items', []):
+            if item.get('id') == item_id:
+                # toggle availability/borrowed state
+                new_status = not item.get('status', False)
+                item['status'] = new_status
+
+                # when an item is borrowed (status becomes False) save account & date
+                if not new_status:
+                    item['account'] = payload.get('account', "") or ""
+                    # if caller didn't send a date use today
+                    item['date'] = payload.get('date', datetime.now().strftime("%Y-%m-%d"))
+                else:
+                    # return: clear account and optionally record return date if provided
+                    item['account'] = ""
+                    item['date'] = payload.get('date', "") or ""
+                break
+        else:
+            return jsonify(error="item not found"), 404
+
+        if (item['account']):
+            item['lastAccount'] = item['account']
+
+        with open("data.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+
+        return jsonify(success=True)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -63,54 +104,17 @@ def get_image(item_id):
 @app.route('/api/multipleStatus', methods=['POST'])
 def multipleStatus():
     payload = request.get_json(silent=True)
-#    logprint(f"/api/multipleStatus | {payload}")
-#    for key in payload:
-#        with status() as payload:
-#            payload = payload[key]
+    logprint(f"/api/multipleStatus | {payload}")
+    for key in payload:
+        logprint(key)
+        changeStatus(key)
     return jsonify(True)
 
 @app.route('/api/status', methods=['POST'])
 def status():
-    try:
-        with open("data.json", "r", encoding="utf-8") as f:
-            data = json.load(f)
-        payload = request.get_json(silent=True)
-        if not payload['status']:
-            logprint(f"/api/status      | {payload['id']} | {payload['account']}")
-        else:
-            logprint(f"/api/status      | {payload['id']} | returned")
-        if not payload or 'id' not in payload or 'account' not in payload:
-            return jsonify(error="missing required fields"), 400
-
-        item_id = payload['id']
-        for item in data.get('items', []):
-            if item.get('id') == item_id:
-                # toggle availability/borrowed state
-                new_status = not item.get('status', False)
-                item['status'] = new_status
-
-                # when an item is borrowed (status becomes False) save account & date
-                if not new_status:
-                    item['account'] = payload.get('account', "") or ""
-                    # if caller didn't send a date use today
-                    item['date'] = payload.get('date', datetime.now().strftime("%Y-%m-%d"))
-                else:
-                    # return: clear account and optionally record return date if provided
-                    item['account'] = ""
-                    item['date'] = payload.get('date', "") or ""
-                break
-        else:
-            return jsonify(error="item not found"), 404
-
-        if (item['account']):
-            item['lastAccount'] = item['account']
-
-        with open("data.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-
-        return jsonify(success=True)
-    except Exception as e:
-        return jsonify(error=str(e)), 500
+    payload = request.get_json(silent=True)
+    logprint(payload)
+    return changeStatus(payload)
     
 @app.route('/api/getimage', methods=['POST'])
 def getimage():
