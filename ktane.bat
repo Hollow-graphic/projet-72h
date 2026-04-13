@@ -3,9 +3,6 @@ chcp 65001 >nul
 setlocal enabledelayedexpansion
 for /f %%a in ('echo prompt $E ^| cmd') do set ESC=%%a
 set result=""
-set timerMinute = %time:~3,2%
-set /A timerMinute = %time:~3,2%+1
-set /A timerSecond = %time:~6,2%
 set RED=%ESC%[31m
 set YELLOW=%ESC%[33m
 set BLUE=%ESC%[34m
@@ -28,9 +25,13 @@ set str3=│
 set str4=│
 set str5=└
 
+set timerMinute = %time:~3,2%
+set /A timerMinute = %time:~3,2%+1
+set /A timerSecond = %time:~6,2%
+
 for /l %%i in (1,1,%nbMod%) do (
-    set /A listMod[%%i]=!RANDOM! * 3 / 32768 + 1
-    
+    REM set /A listMod[%%i]=!RANDOM! * 3 / 32768 + 1
+    set /A listMod[%%i] = 1
     set str1=!str1!───────
     call :moduleDisplay !listMod[%%i]!
     set str5=!str5!───────
@@ -136,7 +137,7 @@ exit /b
 
 :modWires
 REM set /A nbWire=2 + !RANDOM! * 4 / 32768 + 1
-set nbWire=3
+set /A nbWire=4
 echo ┌────────┐
 for /l %%i in (1,1,!nbWire!) do (
     set /A listColor[%%i]=!RANDOM! * 4 / 32768 + 1
@@ -149,10 +150,18 @@ if %response%==x (goto base)
 call :verifyWires !response!
 goto startup
 
-REM S'il n'y a pas de fil rouge, coupez le deuxième fil.
-REM Sinon, si le dernier fil est blanc, coupez le dernier fil.
-REM Sinon, s'il y a plus d'un fil bleu, coupez le dernier fil bleu.
-REM Sinon, coupez le dernier fil.
+REM ─ Si 3 cables ───
+REM If there are no white wires and the serial number starts with a letter, cut the second wire.
+REM If there is exactly one red wire, cut the first wire.
+REM If there is more than one blue wire, cut the first blue wire.
+REM If the last wire is red, cut the last wire.
+REM Otherwise, cut the second wire
+
+REM ─ Si 4 cables ───
+REM If there is exactly one yellow wire and the last wire is red, cut the third wire.
+REM Otherwise, If the last wire is white, cut the second wire.
+REM Otherwise, If there are no yellow wires, cut the first wire.
+REM Otherwise, cut the last wire
 
 :verifyWires
 set rules1=0
@@ -160,7 +169,7 @@ set rules2=0
 set rules3=0
 set rules3bis=0
 if !nbWire!==3 (
-	for /l %%i in (1,1,!nbWire!) do (
+	for /l %%i in (1,1,3) do (
 		if !listColor[%%i]!==1 (set rules1=1)
 		if !listColor[%%i]!==3 (
 			set /A rules3=!rules3!+1
@@ -171,17 +180,30 @@ if !nbWire!==3 (
 	) else if !listColor[%nbWire%]!==4 (set correctWire=%nbWire%
     ) else if !rules3! GTR 1 (set correctWire=!rules3bis!
     ) else (set correctWire=%nbWire%)
-	if %~1==!correctWire! (
-        set listMod[%input%]=-1
-        goto base
-    ) else (
-        echo %~1
-        echo !correctWire!
-        goto failed
-    )
+
+) else if !nbWire!==4 (
+    echo rules1: !rules1!
+    echo listColor[4]: !listColor[4]!
+    for /l %%i in (1,1,4) do (
+		if !listColor[%%i]!==2 (
+           set /A rules1=!rules1!+1
+        )
+	)
+    if !rules1==1! if !listColor[4]!==1 (set correctWire=3
+    ) else if !listColor[4]!==4 (set correctWire=2
+    ) else if !rules1!==0 (set correcWire=1
+    ) else (set correctWire=4)
 ) else (
 	echo undifined rules
     echo nbWire: !nbWire!
+)
+if %~1==!correctWire! (
+    set listMod[%input%]=-1
+    goto base
+) else (
+    echo current: %~1
+    echo answer: !correctWire!
+    goto failed
 )
 pause
 exit /b
@@ -191,7 +213,6 @@ echo button
 pause
 exit /b
 
-REM λ ψ Ω ω
 :modKeypad
 echo keypad
 set /A idList=!RANDOM! * 6 / 32768 + 1
