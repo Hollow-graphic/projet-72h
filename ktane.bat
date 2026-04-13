@@ -50,15 +50,22 @@ exit /b
 :failed
 echo failed
 echo with %timerMinute%:%timerSecond%
-echo %time:~3,2%
-echo %timerMinute%
-echo %time:~6,2% 
-echo %timerSecond%
+if %time:~3,2% GEQ %timerMinute% (
+    if %time:~6,2% GEQ %timerSecond% (
+        echo %time:~3,2%:%time:~6,2%
+        echo %timerMinute%:%timerSecond%
+    )
+)
+if %~1 NEQ !correctWire! (
+    echo current: %~1
+    echo answer: !correctWire!
+)
 pause
 goto startup
 
 :win
 echo you Win
+echo with %timerMinute%:%timerSecond%
 pause
 goto startup
 
@@ -71,11 +78,9 @@ for /l %%i in (1,1,%nbMod%) do (
     )
 )
 
-if %time:~3,2% GEQ %timerMinute% goto failed
-echo %time:~3,2%
-echo %timerMinute%
-echo %time:~6,2% 
-echo %timerSecond%
+if %time:~3,2% GEQ %timerMinute% (
+    if %time:~6,2% GEQ %timerSecond% (goto failed)
+)
 
 if !result!==0 (goto win)
 echo need %result% to finish / %time:~3,2%:%time:~6,2%
@@ -136,8 +141,8 @@ goto base
 exit /b
 
 :modWires
-REM set /A nbWire=2 + !RANDOM! * 4 / 32768 + 1
-set /A nbWire=4
+cls
+set /A nbWire= 2 + !RANDOM! * 2 / 32768 + 1
 echo ┌────────┐
 for /l %%i in (1,1,!nbWire!) do (
     set /A listColor[%%i]=!RANDOM! * 4 / 32768 + 1
@@ -145,6 +150,7 @@ for /l %%i in (1,1,!nbWire!) do (
     echo │%%i!color!~~~~~~~!RESET!│
 )
 echo └────────┘
+set response=0
 set /P response="(x to exit) which Wires to you cut ?: "
 if %response%==x (goto base)
 call :verifyWires !response!
@@ -182,14 +188,12 @@ if !nbWire!==3 (
     ) else (set correctWire=%nbWire%)
 
 ) else if !nbWire!==4 (
-    echo rules1: !rules1!
-    echo listColor[4]: !listColor[4]!
     for /l %%i in (1,1,4) do (
-		if !listColor[%%i]!==2 (
-           set /A rules1=!rules1!+1
+        if !listColor[%%i]!==2 (
+            set /A rules1=!rules1!+1
         )
-	)
-    if !rules1==1! if !listColor[4]!==1 (set correctWire=3
+    )
+    if !rules1!==1 (if !listColor[4]!==1 (set correctWire=3)
     ) else if !listColor[4]!==4 (set correctWire=2
     ) else if !rules1!==0 (set correcWire=1
     ) else (set correctWire=4)
@@ -201,8 +205,6 @@ if %~1==!correctWire! (
     set listMod[%input%]=-1
     goto base
 ) else (
-    echo current: %~1
-    echo answer: !correctWire!
     goto failed
 )
 pause
