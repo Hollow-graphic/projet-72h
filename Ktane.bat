@@ -30,8 +30,8 @@ set /A timerMinute = %time:~3,2%+1
 set /A timerSecond = %time:~6,2%
 
 for /l %%i in (1,1,%nbMod%) do (
-    REM set /A listMod[%%i]=!RANDOM! * 3 / 32768 + 1
-    set /A listMod[%%i] = 1
+    set /A listMod[%%i]=!RANDOM! * 1 / 32768 + 1
+    REM set /A listMod[%%i] = 1
     set str1=!str1!───────
     call :moduleDisplay !listMod[%%i]!
     set str5=!str5!───────
@@ -59,6 +59,10 @@ if %time:~3,2% GEQ %timerMinute% (
 if %~1 NEQ !correctWire! (
     echo current: %~1
     echo answer: !correctWire!
+    echo !rules1!
+    for /l %%i in (1,1,!nbWire!) do (
+        echo %%i: !listColor[%%i]!
+    )
 )
 pause
 goto startup
@@ -100,11 +104,11 @@ if "%~1"=="1" (
     set str2=!str2!~~~~~~~│
     set str3=!str3!~~~~~~~│
     set str4=!str4!~~~~~~~│
-) else if "%~1"=="2" (
+) else if "%~1"=="3" (
     set str2=!str2! /───\ │
     set str3=!str3!  ---  │
     set str4=!str4! \───/ │
-) else if "%~1"=="3" (
+) else if "%~1"=="2" (
     set str2=!str2! ┌─┬─┐ │
     set str3=!str3! ├─┼─┤ │
     set str4=!str4! └─┴─┘ │
@@ -134,8 +138,8 @@ exit /b
 
 :modRedirect
 if "!listMod[%~1]!"=="1" (call :modWires %~1)
-if "!listMod[%~1]!"=="2" (call :modButton %~1)
-if "!listMod[%~1]!"=="3" (call :modKeypad %~1)
+if "!listMod[%~1]!"=="3" (call :modButton %~1)
+if "!listMod[%~1]!"=="2" (call :modKeypad %~1)
 echo !listMod[%~1]!
 goto base
 exit /b
@@ -152,7 +156,7 @@ for /l %%i in (1,1,!nbWire!) do (
 echo └────────┘
 set response=0
 set /P response="(x to exit) which Wires to you cut ?: "
-if %response%==x (goto base)
+if /i "%response%"=="x" (goto base)
 call :verifyWires !response!
 goto startup
 
@@ -170,6 +174,7 @@ REM Otherwise, If there are no yellow wires, cut the first wire.
 REM Otherwise, cut the last wire
 
 :verifyWires
+set correctWire=0
 set rules1=0
 set rules2=0
 set rules3=0
@@ -183,7 +188,7 @@ if !nbWire!==3 (
 		)
 	)
 	if !rules1!==0 (set correctWire=2
-	) else if !listColor[%nbWire%]!==4 (set correctWire=%nbWire%
+	) else if !listColor[3]!==4 (set correctWire=3
     ) else if !rules3! GTR 1 (set correctWire=!rules3bis!
     ) else (set correctWire=%nbWire%)
 
@@ -193,10 +198,12 @@ if !nbWire!==3 (
             set /A rules1=!rules1!+1
         )
     )
-    if !rules1!==1 (if !listColor[4]!==1 (set correctWire=3)
-    ) else if !listColor[4]!==4 (set correctWire=2
-    ) else if !rules1!==0 (set correcWire=1
-    ) else (set correctWire=4)
+    if !rules1!==1 (if !listColor[4]!==1 (set correctWire=3))
+    if !correctWire!!==0 (
+        if !listColor[4]!==4 (set correctWire=2
+        ) else if !rules1!==0 (set correctWire=1
+        ) else (set correctWire=4)
+    )
 ) else (
 	echo undifined rules
     echo nbWire: !nbWire!
@@ -249,12 +256,13 @@ if "!keypadSymbol1!"=="B" (set keypadSymbol1=҈)
 if "!keypadSymbol2!"=="B" (set keypadSymbol2=҈)
 if "!keypadSymbol3!"=="B" (set keypadSymbol3=҈)
 if "!keypadSymbol4!"=="B" (set keypadSymbol4=҈)
-echo ┌─┬─┐
+echo ┌1┬2┐
 echo │%keypadSymbol1%│%keypadSymbol2%│
 echo ├─┼─┤
 echo │%keypadSymbol3%│%keypadSymbol4%│
-echo └─┴─┘
-pause
+echo └3┴4┘
+set /P response ="WIP (x to exit) which symbol do you press ?: "
+if %response%==x (goto base)
 exit /b
 
 
